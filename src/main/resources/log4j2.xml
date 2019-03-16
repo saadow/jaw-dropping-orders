@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE xml>
-<Configuration status="DEBUG" monitorInterval="30">
+<Configuration status="INFO" monitorInterval="30">
 	<Properties>
 		<Property name="LOG_PATTERN">
 			| %d{yyyy-MM-dd HH:mm:ss} | %p | at %C{2}(%F:%L) | %m | %n  
