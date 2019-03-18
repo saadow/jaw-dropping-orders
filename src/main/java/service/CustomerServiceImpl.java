@@ -56,4 +56,12 @@ public class CustomerServiceImpl implements CustomerService {
 		LOG.debug("delete customer completed");
 	}
 
+	@Override
+	public Customer findById(BigDecimal id) {
+		LOG.debug("find customer by, custNum={}", id);
+		Customer result = customerRepository.findByCustNum(id);
+		LOG.debug("findOrderById, result={}", result);
+		return result;
+	}
+
 }
