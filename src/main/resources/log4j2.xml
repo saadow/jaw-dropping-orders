@@ -21,14 +21,6 @@
 			</Policies>
 			<DefaultRolloverStrategy max="2" />
 		</RollingFile>
-
-		<SMTP name="FEMAIL" SMTPProtocol="smtps"
-			SMTPHost="smtp.gmail.com" SMTPPort="465"
-			SMTPUsername="vadim.chumasov@gmail.com" SMTPPassword="myPassword"
-			To="vadim.chumasov@gmail.com" from="vadim.chumasov@gmail.com"
-			Subject="Calculator Error Log">
-		</SMTP>
-
 	</Appenders>
 	<Loggers>
 		<AsyncLogger name="error-logger" level="ERROR">

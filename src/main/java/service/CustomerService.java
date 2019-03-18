@@ -8,8 +8,6 @@ import entity.Customer;
 public interface CustomerService {
 	Set<Customer> getAllCustomers();
 
-	Customer findByCustNum(BigDecimal custNum);
-
 	void insertCustomer(Customer customer);
 
 	void updateCustomer(Customer customer);

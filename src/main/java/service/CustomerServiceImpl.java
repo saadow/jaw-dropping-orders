@@ -31,14 +31,6 @@ public class CustomerServiceImpl implements CustomerService {
 	}
 
 	@Override
-	public Customer findByCustNum(BigDecimal custNum) {
-		LOG.debug("find customer by, custNum={}", custNum);
-		Customer result = customerRepository.findByCustNum(custNum);
-		LOG.debug("findOrderById, result={}", result);
-		return result;
-	}
-
-	@Override
 	public void insertCustomer(Customer customer) {
 		LOG.debug("insert customer = {}", customer);
 		customerRepository.save(customer);

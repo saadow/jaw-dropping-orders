@@ -13,7 +13,7 @@ public class Main {
 		CustomerRepository customerRep = context.getBean(CustomerRepository.class);
 		customerRep.findAll().forEach(System.out::println);
 		customerRep.findByCustRep_AgeIsGreaterThan(BigDecimal.valueOf(50)).forEach(System.out::println);
-		System.out.println("♡━━━━━━━━━━━━━━━♡ ｡･:*:･ﾟ★,｡･:*:･ﾟ☆ CACHING??? ｡･:*:･ﾟ★,｡･:*:･ﾟ☆ ☆━━━━━━━━━━━━━━━☆");
+		System.out.println("｡･:*:･ﾟ★,｡･:*:･ﾟ☆ CACHING??? ｡･:*:･ﾟ★,｡･:*:･ﾟ☆");
 		customerRep.findByCustRep_AgeIsGreaterThan(BigDecimal.valueOf(50)).forEach(System.out::println);
 	}
 
