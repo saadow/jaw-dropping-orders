@@ -2,6 +2,7 @@ package service;
 
 import java.math.BigDecimal;
 import java.util.HashSet;
+import java.util.Optional;
 import java.util.Set;
 
 import org.apache.logging.log4j.LogManager;
@@ -22,7 +23,6 @@ public class CustomerServiceImpl implements CustomerService {
 	@Autowired
 	private CustomerRepository customerRepository;
 
-	@Override
 	public Set<Customer> getAllCustomers() {
 		LOG.debug("get all customers");
 		HashSet<Customer> result = new HashSet<Customer>(customerRepository.findAll());
@@ -30,21 +30,18 @@ public class CustomerServiceImpl implements CustomerService {
 		return result;
 	}
 
-	@Override
 	public void insertCustomer(Customer customer) {
 		LOG.debug("insert customer = {}", customer);
 		customerRepository.save(customer);
 		LOG.debug("insert completed");
 	}
 
-	@Override
 	public void updateCustomer(Customer customer) {
 		LOG.debug("update customer={}", customer);
 		customerRepository.save(customer);
 		LOG.debug("update completed");
 	}
 
-	@Override
 	public void deleteCustomer(BigDecimal custNum) {
 		LOG.debug("delete customer by CustNum = {}", custNum);
 		try {
@@ -56,10 +53,9 @@ public class CustomerServiceImpl implements CustomerService {
 		LOG.debug("delete customer completed");
 	}
 
-	@Override
-	public Customer findById(BigDecimal id) {
+	public Customer findCustomerById(BigDecimal id) {
 		LOG.debug("find customer by, custNum={}", id);
-		Customer result = customerRepository.findByCustNum(id);
+		Customer result = customerRepository.findById(id).get();
 		LOG.debug("findOrderById, result={}", result);
 		return result;
 	}

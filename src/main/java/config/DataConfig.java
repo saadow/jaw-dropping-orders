@@ -20,11 +20,13 @@ import org.springframework.context.annotation.PropertySource;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import com.mchange.v2.c3p0.ComboPooledDataSource;
 
 @Configuration
 @EnableCaching
+@EnableTransactionManagement
 @EnableJpaRepositories("repository")
 @ComponentScan("service")
 @PropertySource("classpath:properties/database.properties")

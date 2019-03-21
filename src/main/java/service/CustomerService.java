@@ -1,6 +1,7 @@
 package service;
 
 import java.math.BigDecimal;
+import java.util.Optional;
 import java.util.Set;
 
 import entity.Customer;
@@ -8,7 +9,7 @@ import entity.Customer;
 public interface CustomerService {
 	Set<Customer> getAllCustomers();
 	
-	Customer findById(BigDecimal id);
+	Customer findCustomerById(BigDecimal id);
 
 	void insertCustomer(Customer customer);
 

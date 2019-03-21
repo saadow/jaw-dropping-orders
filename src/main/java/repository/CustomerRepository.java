@@ -14,6 +14,5 @@ public interface CustomerRepository extends JpaRepository<Customer, BigDecimal> 
 
 	@Cacheable("findByCustRep_AgeIsGreaterThan")
 	List<Customer> findByCustRep_AgeIsGreaterThan(BigDecimal age);
-
-	Customer findByCustNum(BigDecimal custNum);
+	
 }
