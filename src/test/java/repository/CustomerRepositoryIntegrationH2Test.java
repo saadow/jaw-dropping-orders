@@ -34,7 +34,6 @@ public class CustomerRepositoryIntegrationH2Test {
 	private static final Customer CUSTOMER_FOR_INSERT = new Customer(BigDecimal.valueOf(1101), null, null, null);
 	private static final Customer CUSTOMER_FOR_UPDATE = new Customer(BigDecimal.valueOf(111111), "COMPANY1", null,
 			BigDecimal.valueOf(32));
-	private static final Customer CUSTOMER_FOR_DELETE = new Customer(BigDecimal.valueOf(1101), null, null, null);
 
 	@Autowired
 	private DataSource dataSource;
@@ -59,7 +58,7 @@ public class CustomerRepositoryIntegrationH2Test {
 
 	@Test
 	public void testFindCustomerById() {
-		assertNotNull(customerRepository.findById(BigDecimal.valueOf(111111)));
+		assertNotNull((customerRepository.findById(BigDecimal.valueOf(111111))).get());
 	}
 
 	@Test
@@ -76,6 +75,6 @@ public class CustomerRepositoryIntegrationH2Test {
 
 	@Test
 	public void testDeleteCustomer() {
-		customerRepository.delete(CUSTOMER_FOR_DELETE);
+		customerRepository.delete(CUSTOMER_FOR_INSERT);
 	}
 }

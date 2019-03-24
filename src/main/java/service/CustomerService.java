@@ -9,6 +9,8 @@ import entity.Customer;
 public interface CustomerService {
 	Set<Customer> getAllCustomers();
 	
+	Set<Customer> getCustomersCreditLimitMoreThan(BigDecimal creditLimit);
+	
 	Customer findCustomerById(BigDecimal id);
 
 	void insertCustomer(Customer customer);

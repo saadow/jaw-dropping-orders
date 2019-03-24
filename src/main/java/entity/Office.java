@@ -82,6 +82,61 @@ public class Office implements Serializable {
 	}
 
 	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((city == null) ? 0 : city.hashCode());
+		result = prime * result + ((mgr == null) ? 0 : mgr.hashCode());
+		result = prime * result + ((office == null) ? 0 : office.hashCode());
+		result = prime * result + ((region == null) ? 0 : region.hashCode());
+		result = prime * result + ((sales == null) ? 0 : sales.hashCode());
+		result = prime * result + ((target == null) ? 0 : target.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Office other = (Office) obj;
+		if (city == null) {
+			if (other.city != null)
+				return false;
+		} else if (!city.equals(other.city))
+			return false;
+		if (mgr == null) {
+			if (other.mgr != null)
+				return false;
+		} else if (!mgr.equals(other.mgr))
+			return false;
+		if (office == null) {
+			if (other.office != null)
+				return false;
+		} else if (!office.equals(other.office))
+			return false;
+		if (region == null) {
+			if (other.region != null)
+				return false;
+		} else if (!region.equals(other.region))
+			return false;
+		if (sales == null) {
+			if (other.sales != null)
+				return false;
+		} else if (!sales.equals(other.sales))
+			return false;
+		if (target == null) {
+			if (other.target != null)
+				return false;
+		} else if (!target.equals(other.target))
+			return false;
+		return true;
+	}
+
+	@Override
 	public String toString() {
 		return "Office{" + "office=" + office + ", city='" + city + '\'' + ", region='" + region + '\'' + ", mgr=" + mgr
 				+ ", target=" + target + ", sales=" + sales + '}';

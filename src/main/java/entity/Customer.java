@@ -39,7 +39,7 @@ public class Customer implements java.io.Serializable {
 	public void setCustNum(BigDecimal cust_num) {
 		this.custNum = cust_num;
 	}
-	
+
 	public Salesreps getCustRep() {
 		return custRep;
 	}
@@ -58,6 +58,10 @@ public class Customer implements java.io.Serializable {
 
 	public String getCompany() {
 		return company;
+	}
+
+	public void setCompany(String company) {
+		this.company = company;
 	}
 
 	@Override
@@ -97,13 +101,8 @@ public class Customer implements java.io.Serializable {
 		return true;
 	}
 
-	public void setCompany(String company) {
-		this.company = company;
-	}
-
 	@Override
 	public String toString() {
-		return "Customer{" + "custNum=" + custNum + ", company=" + company + ", creditLimit="
-				+ creditLimit + '}';
+		return "Customer{" + "custNum=" + custNum + ", company=" + company + ", creditLimit=" + creditLimit + '}';
 	}
 }

@@ -2,6 +2,7 @@ package service;
 
 import java.math.BigDecimal;
 import java.util.HashSet;
+import java.util.NoSuchElementException;
 import java.util.Optional;
 import java.util.Set;
 
@@ -44,19 +45,22 @@ public class CustomerServiceImpl implements CustomerService {
 
 	public void deleteCustomer(BigDecimal custNum) {
 		LOG.debug("delete customer by CustNum = {}", custNum);
-		try {
-			customerRepository.deleteById(custNum);
-		} catch (EmptyResultDataAccessException e) {
-			LOG.warn("Can't delete customer with id = {}", custNum + ", EmptyResultData");
-			throw new DeleteException("Can't delete customer by Id = " + custNum + ", EmptyResultData");
-		}
+		customerRepository.deleteById(custNum);
 		LOG.debug("delete customer completed");
 	}
-
+	
 	public Customer findCustomerById(BigDecimal id) {
-		LOG.debug("find customer by, custNum={}", id);
-		Customer result = customerRepository.findById(id).get();
-		LOG.debug("findOrderById, result={}", result);
+		LOG.debug("Find Customer by id={}", id);
+		Customer result = customerRepository.findById(id).orElse(null);
+		LOG.debug("Find Customer by id result={}", result);
+		return result;
+	}
+
+	@Override
+	public Set<Customer> getCustomersCreditLimitMoreThan(BigDecimal creditLimit) {
+		LOG.debug("Getting Customers wtih Credit Limit > " + creditLimit);
+		HashSet<Customer> result = new HashSet<Customer>(customerRepository.findByCreditLimitIsGreaterThan(creditLimit));
+		LOG.debug("{} results", result.size());
 		return result;
 	}
 

@@ -9,8 +9,12 @@
 
 	<properties>
 		<java.version>1.8</java.version>
+		<maven.compiler.plugin>3.8.0</maven.compiler.plugin>
+		<maven.war.plugin>2.3</maven.war.plugin>
 		<log4j2-core.version>2.11.1</log4j2-core.version>
-		<spring.version>5.1.5.RELEASE</spring.version>
+		<disruptor.version>3.4.2</disruptor.version>
+		<javax.mail.version>1.6.1</javax.mail.version>
+		<smtp.version>1.6.1</smtp.version>
 		<ojdbc.version>1.0</ojdbc.version>
 		<c3p0.version>0.9.1.2</c3p0.version>
 		<junit.version>4.12</junit.version>
@@ -19,6 +23,7 @@
 		<hibernate.core.version>5.4.1.Final</hibernate.core.version>
 		<javax.servlet.api.version>4.0.1</javax.servlet.api.version>
 		<jackson.databind.version>2.9.8</jackson.databind.version>
+		<spring.version>5.1.5.RELEASE</spring.version>
 		<spring.context.version>5.1.5.RELEASE</spring.context.version>
 		<spring.webmvc.version>5.1.5.RELEASE</spring.webmvc.version>
 		<spring.data.jpa.version>2.1.5.RELEASE</spring.data.jpa.version>
@@ -26,6 +31,23 @@
 	</properties>
 
 	<dependencies>
+		<!-- Swagger -->
+		<dependency>
+			<groupId>io.springfox</groupId>
+			<artifactId>springfox-swagger2</artifactId>
+			<version>2.9.2</version>
+		</dependency>
+		<dependency>
+			<groupId>io.springfox</groupId>
+			<artifactId>springfox-swagger-ui</artifactId>
+			<version>2.9.2</version>
+		</dependency>
+		<!-- Rest -->
+		<dependency>
+			<groupId>javax.ws.rs</groupId>
+			<artifactId>javax.ws.rs-api</artifactId>
+			<version>2.1.1</version>
+		</dependency>
 		<!--For tests -->
 		<dependency>
 			<groupId>junit</groupId>
@@ -59,7 +81,7 @@
 			<artifactId>ojdbc7</artifactId>
 			<version>${ojdbc.version}</version>
 			<scope>system</scope>
-			<systemPath>${project.basedir}/ojdbc7.jar</systemPath>
+			<systemPath>${project.basedir}/WebContent/WEB-INF/lib/ojdbc7.jar</systemPath>
 		</dependency>
 		<dependency>
 			<groupId>c3p0</groupId>
@@ -71,6 +93,21 @@
 			<groupId>org.apache.logging.log4j</groupId>
 			<artifactId>log4j-core</artifactId>
 			<version>${log4j2-core.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.lmax</groupId>
+			<artifactId>disruptor</artifactId>
+			<version>${disruptor.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.sun.mail</groupId>
+			<artifactId>javax.mail</artifactId>
+			<version>${javax.mail.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.sun.mail</groupId>
+			<artifactId>smtp</artifactId>
+			<version>${smtp.version}</version>
 		</dependency>
 		<!-- Hibernate -->
 		<dependency>
@@ -113,7 +150,7 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
-				<version>3.8.0</version>
+				<version>${maven.compiler.plugin}</version>
 				<configuration>
 					<source>${java.version}</source>
 					<target>${java.version}</target>
@@ -122,7 +159,7 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-war-plugin</artifactId>
-				<version>2.3</version>
+				<version>${maven.war.plugin}</version>
 				<configuration>
 					<failOnMissingWebXml>false</failOnMissingWebXml>
 				</configuration>

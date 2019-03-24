@@ -21,9 +21,20 @@
 			</Policies>
 			<DefaultRolloverStrategy max="2" />
 		</RollingFile>
+		
+		<SMTP name="FEMAIL" 
+		SMTPProtocol="smtps" 
+		SMTPHost="smtp.gmail.com"
+			SMTPPort="465" 
+			SMTPUsername="vadim.chumasov@gmail.com" 
+			SMTPPassword="88vadim2005"
+			To="vadim.chumasov@gmail.com"
+			from="vadim.chumasov@gmail.com" 
+			Subject="Spring MVC jaw-dropping-customers Error Log">
+		</SMTP>	
 	</Appenders>
 	<Loggers>
-		<AsyncLogger name="error-logger" level="ERROR">
+		<AsyncLogger name="error-logger" level="DEBUG">
 			<AppenderRef ref="FEMAIL" />
 		</AsyncLogger>
 		<Root level="DEBUG" includeLocation="true">
