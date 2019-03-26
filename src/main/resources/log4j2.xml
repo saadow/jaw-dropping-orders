@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE xml>
-<Configuration status="INFO" monitorInterval="30">
+<Configuration status="DEBUG" monitorInterval="30">
 	<Properties>
 		<Property name="LOG_PATTERN">
 			| %d{yyyy-MM-dd HH:mm:ss} | %p | at %C{2}(%F:%L) | %m | %n  
@@ -21,17 +21,14 @@
 			</Policies>
 			<DefaultRolloverStrategy max="2" />
 		</RollingFile>
-		
-		<SMTP name="FEMAIL" 
-		SMTPProtocol="smtps" 
-		SMTPHost="smtp.gmail.com"
-			SMTPPort="465" 
-			SMTPUsername="vadim.chumasov@gmail.com" 
-			SMTPPassword="88vadim2005"
-			To="vadim.chumasov@gmail.com"
-			from="vadim.chumasov@gmail.com" 
-			Subject="Spring MVC jaw-dropping-customers Error Log">
-		</SMTP>	
+    
+		<SMTP name="FEMAIL" SMTPProtocol="smtps"
+			SMTPHost="smtp.gmail.com" SMTPPort="465"
+			SMTPUsername="vadim.chumasov@gmail.com" SMTPPassword="1111"
+			To="vadim.chumasov@gmail.com" from="vadim.chumasov@gmail.com"
+			Subject="Jaw-dropping Customers Error Log">
+		</SMTP>
+
 	</Appenders>
 	<Loggers>
 		<AsyncLogger name="error-logger" level="DEBUG">
