@@ -13,8 +13,8 @@
 		<maven.war.plugin>2.3</maven.war.plugin>
 		<log4j2-core.version>2.11.1</log4j2-core.version>
 		<disruptor.version>3.4.2</disruptor.version>
-		<javax.mail.version>1.6.1</javax.mail.version>
-		<smtp.version>1.6.1</smtp.version>
+		<javax-mail.version>1.4</javax-mail.version>
+		<smtp.version>1.4.5</smtp.version>
 		<ojdbc.version>1.0</ojdbc.version>
 		<c3p0.version>0.9.1.2</c3p0.version>
 		<junit.version>4.12</junit.version>
@@ -100,9 +100,9 @@
 			<version>${disruptor.version}</version>
 		</dependency>
 		<dependency>
-			<groupId>com.sun.mail</groupId>
-			<artifactId>javax.mail</artifactId>
-			<version>${javax.mail.version}</version>
+			<groupId>javax.mail</groupId>
+			<artifactId>mail</artifactId>
+			<version>${javax-mail.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>com.sun.mail</groupId>
