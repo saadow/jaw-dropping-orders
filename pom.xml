@@ -5,30 +5,83 @@
 	<groupId>jaw-dropping-orders</groupId>
 	<artifactId>jaw-dropping-orders</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
+	<packaging>war</packaging>
 
 	<properties>
 		<java.version>1.8</java.version>
+		<maven.compiler.plugin>3.8.0</maven.compiler.plugin>
+		<maven.war.plugin>2.3</maven.war.plugin>
 		<log4j2-core.version>2.11.1</log4j2-core.version>
-		<spring.version>5.1.5.RELEASE</spring.version>
-		<ojdbc.version>12.1.0</ojdbc.version>
+		<disruptor.version>3.4.2</disruptor.version>
+		<javax.mail.version>1.6.1</javax.mail.version>
+		<smtp.version>1.6.1</smtp.version>
+		<ojdbc.version>1.0</ojdbc.version>
 		<c3p0.version>0.9.1.2</c3p0.version>
+		<junit.version>4.12</junit.version>
+		<h2.version>1.4.198</h2.version>
+		<mockito.core.version>2.23.4</mockito.core.version>
 		<hibernate.core.version>5.4.1.Final</hibernate.core.version>
+		<javax.servlet.api.version>4.0.1</javax.servlet.api.version>
+		<jackson.databind.version>2.9.8</jackson.databind.version>
+		<spring.version>5.1.5.RELEASE</spring.version>
 		<spring.context.version>5.1.5.RELEASE</spring.context.version>
+		<spring.webmvc.version>5.1.5.RELEASE</spring.webmvc.version>
 		<spring.data.jpa.version>2.1.5.RELEASE</spring.data.jpa.version>
+		<spring.test.version>5.1.5.RELEASE</spring.test.version>
 	</properties>
 
 	<dependencies>
-		<!-- Spring JDBC -->
+		<!-- Swagger -->
+		<dependency>
+			<groupId>io.springfox</groupId>
+			<artifactId>springfox-swagger2</artifactId>
+			<version>2.9.2</version>
+		</dependency>
+		<dependency>
+			<groupId>io.springfox</groupId>
+			<artifactId>springfox-swagger-ui</artifactId>
+			<version>2.9.2</version>
+		</dependency>
+		<!-- Rest -->
+		<dependency>
+			<groupId>javax.ws.rs</groupId>
+			<artifactId>javax.ws.rs-api</artifactId>
+			<version>2.1.1</version>
+		</dependency>
+		<!--For tests -->
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>${junit.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.mockito</groupId>
+			<artifactId>mockito-core</artifactId>
+			<version>${mockito.core.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<!-- Spring test -->
 		<dependency>
 			<groupId>org.springframework</groupId>
-			<artifactId>spring-jdbc</artifactId>
-			<version>${spring.version}</version>
+			<artifactId>spring-test</artifactId>
+			<version>${spring.test.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<!-- Embedded H2 sql DB -->
+		<dependency>
+			<groupId>com.h2database</groupId>
+			<artifactId>h2</artifactId>
+			<version>${h2.version}</version>
+			<scope>test</scope>
 		</dependency>
 		<!-- Oracle JDBC -->
 		<dependency>
 			<groupId>com.oracle</groupId>
 			<artifactId>ojdbc7</artifactId>
 			<version>${ojdbc.version}</version>
+			<scope>system</scope>
+			<systemPath>${project.basedir}/WebContent/WEB-INF/lib/ojdbc7.jar</systemPath>
 		</dependency>
 		<dependency>
 			<groupId>c3p0</groupId>
@@ -40,6 +93,21 @@
 			<groupId>org.apache.logging.log4j</groupId>
 			<artifactId>log4j-core</artifactId>
 			<version>${log4j2-core.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.lmax</groupId>
+			<artifactId>disruptor</artifactId>
+			<version>${disruptor.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.sun.mail</groupId>
+			<artifactId>javax.mail</artifactId>
+			<version>${javax.mail.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.sun.mail</groupId>
+			<artifactId>smtp</artifactId>
+			<version>${smtp.version}</version>
 		</dependency>
 		<!-- Hibernate -->
 		<dependency>
@@ -59,5 +127,44 @@
 			<artifactId>spring-data-jpa</artifactId>
 			<version>${spring.data.jpa.version}</version>
 		</dependency>
+		<!-- Spring MVC -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-webmvc</artifactId>
+			<version>${spring.webmvc.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>javax.servlet-api</artifactId>
+			<version>${javax.servlet.api.version}</version>
+		</dependency>
+		<!--For json -->
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-databind</artifactId>
+			<version>${jackson.databind.version}</version>
+		</dependency>
 	</dependencies>
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>${maven.compiler.plugin}</version>
+				<configuration>
+					<source>${java.version}</source>
+					<target>${java.version}</target>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-war-plugin</artifactId>
+				<version>${maven.war.plugin}</version>
+				<configuration>
+					<failOnMissingWebXml>false</failOnMissingWebXml>
+				</configuration>
+			</plugin>
+		</plugins>
+
+	</build>
 </project>

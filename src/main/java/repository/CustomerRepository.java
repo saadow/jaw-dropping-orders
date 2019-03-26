@@ -12,8 +12,7 @@ import entity.Customer;
 @Repository
 public interface CustomerRepository extends JpaRepository<Customer, BigDecimal> {
 
-	@Cacheable("findByCustRep_AgeIsGreaterThan")
-	List<Customer> findByCustRep_AgeIsGreaterThan(BigDecimal age);
+	@Cacheable("findByCreditLimitGreaterThan")
+	List<Customer> findByCreditLimitIsGreaterThan(BigDecimal creditLimit);
 
-	Customer findByCustNum(BigDecimal custNum);
 }

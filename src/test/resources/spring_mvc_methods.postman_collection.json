@@ -1,0 +1,551 @@
+{
+	"info": {
+		"_postman_id": "1501f80c-ef9d-4943-a620-c56f7f856c86",
+		"name": "spring_mvc_methods",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "getCustomerByIdExist",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8091/Customers/customer/2111",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8091",
+					"path": [
+						"Customers",
+						"customer",
+						"2111"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "getCustomerByIdExist",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8091/Customers/customer/2111",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8091",
+							"path": [
+								"Customers",
+								"customer",
+								"2111"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json;charset=UTF-8"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Sat, 23 Mar 2019 23:27:04 GMT"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"custNum\": 2111,\n    \"creditLimit\": 1000000,\n    \"company\": \"Рога и копыта\"\n}"
+				}
+			]
+		},
+		{
+			"name": "getCustomerByIdNotExist",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8091/Customers/customer/9999",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8091",
+					"path": [
+						"Customers",
+						"customer",
+						"9999"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "getCustomerByIdNotExist",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8091/Customers/customer/9999",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8091",
+							"path": [
+								"Customers",
+								"customer",
+								"9999"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "plain",
+					"header": [
+						{
+							"key": "Content-Length",
+							"value": "0"
+						},
+						{
+							"key": "Date",
+							"value": "Sat, 23 Mar 2019 23:28:09 GMT"
+						}
+					],
+					"cookie": [],
+					"body": null
+				}
+			]
+		},
+		{
+			"name": "deleteCustomerByIdExist",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8091/Customers/customer/2199",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8091",
+					"path": [
+						"Customers",
+						"customer",
+						"2199"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "deleteCustomerByIdExist",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8091/Customers/customer/2199",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8091",
+							"path": [
+								"Customers",
+								"customer",
+								"2199"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "plain",
+					"header": [
+						{
+							"key": "Content-Length",
+							"value": "0"
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 24 Mar 2019 00:00:13 GMT"
+						}
+					],
+					"cookie": [],
+					"body": null
+				}
+			]
+		},
+		{
+			"name": "deleteCustomerByIdNotExist",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8091/Customers/customer/9999",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8091",
+					"path": [
+						"Customers",
+						"customer",
+						"9999"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "deleteCustomerByIdNotExist",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8091/Customers/customer/9999",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8091",
+							"path": [
+								"Customers",
+								"customer",
+								"9999"
+							]
+						}
+					},
+					"status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+					"code": 422,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json;charset=UTF-8"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 24 Mar 2019 00:00:30 GMT"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Could not delete Customer id=9999, because it does not exist.\"\n}"
+				}
+			]
+		},
+		{
+			"name": "updateCustomerByIdExist",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8091/Customers/customer/2112?creditLimit=1000000",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8091",
+					"path": [
+						"Customers",
+						"customer",
+						"2112"
+					],
+					"query": [
+						{
+							"key": "creditLimit",
+							"value": "1000000"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "updateCustomerByIdNotExist",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8091/Customers/customer/9999?creditLimit=1000000",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8091",
+					"path": [
+						"Customers",
+						"customer",
+						"9999"
+					],
+					"query": [
+						{
+							"key": "creditLimit",
+							"value": "1000000"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "updateCustomerByIdNotExist",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8091/Customers/customer/9999?creditLimit=1000000",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8091",
+							"path": [
+								"Customers",
+								"customer",
+								"9999"
+							],
+							"query": [
+								{
+									"key": "creditLimit",
+									"value": "1000000"
+								}
+							]
+						}
+					},
+					"status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+					"code": 422,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json;charset=UTF-8"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 24 Mar 2019 00:01:01 GMT"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Could not update Customer id=9999, because it does not exist.\"\n}"
+				}
+			]
+		},
+		{
+			"name": "getCustomersCreditLimitMoreThan",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8091/Customers/customer/?creditLimit=50",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8091",
+					"path": [
+						"Customers",
+						"customer",
+						""
+					],
+					"query": [
+						{
+							"key": "creditLimit",
+							"value": "50"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "getCustomersCreditLimitMoreThan",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8091/Customers/customer/?creditLimit=50",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8091",
+							"path": [
+								"Customers",
+								"customer",
+								""
+							],
+							"query": [
+								{
+									"key": "creditLimit",
+									"value": "50"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json;charset=UTF-8"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 24 Mar 2019 00:01:12 GMT"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"custNum\": 2120,\n        \"creditLimit\": 50.126,\n        \"company\": \"Зашаренные\"\n    },\n    {\n        \"custNum\": 2103,\n        \"creditLimit\": 50.455,\n        \"company\": \"Крупное предприятие\"\n    },\n    {\n        \"custNum\": 2102,\n        \"creditLimit\": 65.345,\n        \"company\": \"Большой Бил\"\n    },\n    {\n        \"custNum\": 2112,\n        \"creditLimit\": 1000000,\n        \"company\": \"Апельсин\"\n    },\n    {\n        \"custNum\": 2108,\n        \"creditLimit\": 55.323,\n        \"company\": \"Унесенные ветром\"\n    },\n    {\n        \"custNum\": 2106,\n        \"creditLimit\": 65.902,\n        \"company\": \"Злыдень Карпорейтед\"\n    },\n    {\n        \"custNum\": 2101,\n        \"creditLimit\": 65.887,\n        \"company\": \"Перекати поле\"\n    },\n    {\n        \"custNum\": 2118,\n        \"creditLimit\": 60.653,\n        \"company\": \"Просто Балбесы\"\n    }\n]"
+				}
+			]
+		},
+		{
+			"name": "getCustomersCreditLimitMoreThanExpectedEmpty",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8091/Customers/customer/?creditLimit=1000000",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8091",
+					"path": [
+						"Customers",
+						"customer",
+						""
+					],
+					"query": [
+						{
+							"key": "creditLimit",
+							"value": "1000000"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "getCustomersCreditLimitMoreThanExpectedEmpty",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8091/Customers/customer/?creditLimit=1000000",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8091",
+							"path": [
+								"Customers",
+								"customer",
+								""
+							],
+							"query": [
+								{
+									"key": "creditLimit",
+									"value": "1000000"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json;charset=UTF-8"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 24 Mar 2019 00:01:20 GMT"
+						}
+					],
+					"cookie": [],
+					"body": "[]"
+				}
+			]
+		}
+	]
+}
