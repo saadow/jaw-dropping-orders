@@ -30,7 +30,7 @@ import entity.Customer;
 import repository.CustomerRepository;
 
 @RunWith(MockitoJUnitRunner.class)
-public class CustomerServiceImplTest {
+public class CustomerServiceTest {
 	@Spy
 	@InjectMocks
 	private CustomerService customerService = new CustomerServiceImpl();

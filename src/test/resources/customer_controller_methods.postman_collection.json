@@ -1,0 +1,251 @@
+{
+	"info": {
+		"_postman_id": "8fd6bcd3-0a13-4b06-ae9f-32ad133353e9",
+		"name": "customer_controller_methods",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "getCustomerByIdExist",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8091/Customers/customer/2111",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8091",
+					"path": [
+						"Customers",
+						"customer",
+						"2111"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getCustomerByIdNotExist",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8091/Customers/customer/4000",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8091",
+					"path": [
+						"Customers",
+						"customer",
+						"4000"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "addCustomerNotExist",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"custNum\": 7771,\n  \"customerDetails\": {\n    \"company\": \"Bergen 0795\",\n    \"creditLimit\": 48\n  }\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8091/Customers/customer/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8091",
+					"path": [
+						"Customers",
+						"customer",
+						""
+					],
+					"query": [
+						{
+							"key": "custNum",
+							"value": "2207",
+							"disabled": true
+						},
+						{
+							"key": "company",
+							"value": "\"EMIRATES\"",
+							"disabled": true
+						},
+						{
+							"key": "creditLimit",
+							"value": "19",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "deleteCustomerByIdNotExist",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8091/Customers/customer/99999",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8091",
+					"path": [
+						"Customers",
+						"customer",
+						"99999"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "deleteCustomerByIdExist",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8091/Customers/customer/7771",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8091",
+					"path": [
+						"Customers",
+						"customer",
+						"7771"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "updateCustomerByIdNotExist",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8091/Customers/customer/99999?creditLimit=18",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8091",
+					"path": [
+						"Customers",
+						"customer",
+						"99999"
+					],
+					"query": [
+						{
+							"key": "creditLimit",
+							"value": "18"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "updateCustomerByIdExist",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8091/Customers/customer/2111?creditLimit=44",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8091",
+					"path": [
+						"Customers",
+						"customer",
+						"2111"
+					],
+					"query": [
+						{
+							"key": "creditLimit",
+							"value": "44"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "addCustomerExist",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"custNum\": 2111,\n  \"customerDetails\": {\n    \"company\": \"string\",\n    \"creditLimit\": 11\n  }\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8091/Customers/customer",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8091",
+					"path": [
+						"Customers",
+						"customer"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
