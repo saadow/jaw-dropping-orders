@@ -2,13 +2,14 @@ package controller;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
+
+import java.math.BigDecimal;
 
 import javax.sql.DataSource;
 import javax.ws.rs.core.Response.Status;
@@ -36,10 +37,10 @@ import org.springframework.web.context.WebApplicationContext;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import config.MainMvcConfig;
+import dto.CustomerRequest;
 import dto.ErrorMessage;
 import entity.Customer;
 import util.CustomerDtoModelsUtil;
-import util.CustomerDtoModelsUtilExist;
 
 @DirtiesContext
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -91,12 +92,14 @@ public class CustomerControllerTest {
 
 	@Test
 	public void testAddCustomerExist() throws Exception {
-		String json = mapper.writeValueAsString(CustomerDtoModelsUtilExist.customerRequest());
+		CustomerRequest customerRequest = CustomerDtoModelsUtil.customerRequest();
+		customerRequest.setCustNum(BigDecimal.valueOf(1111));
+		String json = mapper.writeValueAsString(customerRequest);
 		MvcResult mvcResult = mockMvc.perform(post("/customer").contentType(MediaType.APPLICATION_JSON).content(json))
 				.andReturn();
 		assertEquals(422, mvcResult.getResponse().getStatus());
 	}
-	
+
 	@Test
 	public void testDeleteCustomerByIdExist() throws Exception {
 		MvcResult mvcResult = mockMvc.perform(delete("/customer/{id}", "1111")).andDo(print()).andReturn();

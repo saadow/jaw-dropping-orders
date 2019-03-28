@@ -8,7 +8,6 @@ import javax.validation.constraints.Min;
 import javax.validation.constraints.Max;
 
 public class CustomerRequest {
-	@Valid
 	@NotNull(message = "1")
 	@Min(value = 1000, message = "2")
 	@Max(value = 9999, message = "2")
