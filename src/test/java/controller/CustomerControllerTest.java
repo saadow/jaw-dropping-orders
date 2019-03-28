@@ -7,8 +7,8 @@ import static org.junit.Assert.assertTrue;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
-
 
 import javax.sql.DataSource;
 import javax.ws.rs.core.Response.Status;
@@ -19,6 +19,7 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
+import org.springframework.http.MediaType;
 import org.springframework.jdbc.datasource.init.DatabasePopulator;
 import org.springframework.jdbc.datasource.init.DatabasePopulatorUtils;
 import org.springframework.jdbc.datasource.init.ResourceDatabasePopulator;
@@ -37,6 +38,8 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import config.MainMvcConfig;
 import dto.ErrorMessage;
 import entity.Customer;
+import util.CustomerDtoModelsUtil;
+import util.CustomerDtoModelsUtilExist;
 
 @DirtiesContext
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -44,7 +47,7 @@ import entity.Customer;
 @WebAppConfiguration
 @TestPropertySource("classpath:test.properties")
 public class CustomerControllerTest {
-	
+
 	@Autowired
 	private WebApplicationContext webApplicationContext;
 
@@ -64,49 +67,65 @@ public class CustomerControllerTest {
 	}
 
 	@Test
-	public void testGetCustomerByIdExists() throws Exception{
-		MvcResult mvcResult = mockMvc.perform(get("/customer/{id}", "111111")).andDo(print()).andReturn();
+	public void testGetCustomerByIdExist() throws Exception {
+		MvcResult mvcResult = mockMvc.perform(get("/customer/{id}", "1111")).andDo(print()).andReturn();
 		Customer customer = mapper.readValue(mvcResult.getResponse().getContentAsString(), Customer.class);
 		assertEquals(Status.OK.getStatusCode(), mvcResult.getResponse().getStatus());
 		assertNotNull(customer);
 	}
-	
+
 	@Test
-	public void testGetCustomerByIdDoesNotExist() throws Exception{
-		MvcResult mvcResult = mockMvc.perform(get("/customer/{id}", "147488")).andReturn();
+	public void testGetCustomerByIdDoesNotExist() throws Exception {
+		MvcResult mvcResult = mockMvc.perform(get("/customer/{id}", "7488")).andReturn();
 		assertEquals(Status.OK.getStatusCode(), mvcResult.getResponse().getStatus());
 		assertTrue(mvcResult.getResponse().getContentAsString().length() == 0);
 	}
+
+	@Test
+	public void testAddCustomerNotExist() throws Exception {
+		String json = mapper.writeValueAsString(CustomerDtoModelsUtil.customerRequest());
+		MvcResult mvcResult = mockMvc.perform(post("/customer").contentType(MediaType.APPLICATION_JSON).content(json))
+				.andReturn();
+		assertEquals(Status.OK.getStatusCode(), mvcResult.getResponse().getStatus());
+	}
+
+	@Test
+	public void testAddCustomerExist() throws Exception {
+		String json = mapper.writeValueAsString(CustomerDtoModelsUtilExist.customerRequest());
+		MvcResult mvcResult = mockMvc.perform(post("/customer").contentType(MediaType.APPLICATION_JSON).content(json))
+				.andReturn();
+		assertEquals(422, mvcResult.getResponse().getStatus());
+	}
 	
 	@Test
-	public void testDeleteCustomerByIdExists() throws Exception {
-		MvcResult mvcResult = mockMvc.perform(delete("/customer/{id}", "111111")).andDo(print()).andReturn();
+	public void testDeleteCustomerByIdExist() throws Exception {
+		MvcResult mvcResult = mockMvc.perform(delete("/customer/{id}", "1111")).andDo(print()).andReturn();
 		assertEquals(Status.OK.getStatusCode(), mvcResult.getResponse().getStatus());
 	}
 
 	@Test
 	public void testDeleteCustomerByIdDoesNotExist() throws Exception {
-		MvcResult mvcResult = mockMvc.perform(delete("/customer/{id}", "147488")).andReturn();
+		MvcResult mvcResult = mockMvc.perform(delete("/customer/{id}", "7488")).andReturn();
 		assertEquals(422, mvcResult.getResponse().getStatus());
 		assertEquals("application/json;charset=UTF-8", mvcResult.getResponse().getContentType());
 		ErrorMessage errorMessage = mapper.readValue(mvcResult.getResponse().getContentAsString(), ErrorMessage.class);
-		assertEquals("Could not delete Customer id=147488, because it does not exist.", errorMessage.getMessage());
+		assertEquals("Could not delete Customer id=7488, because it does not exist.", errorMessage.getMessage());
 	}
 
 	@Test
-	public void testUpdateCustomerByIdExists() throws Exception {
-		MvcResult mvcResult = mockMvc.perform(put("/customer/{id}", "111111").param("creditLimit", "11")).andDo(print())
+	public void testUpdateCustomerByIdExist() throws Exception {
+		MvcResult mvcResult = mockMvc.perform(put("/customer/{id}", "1111").param("creditLimit", "11")).andDo(print())
 				.andReturn();
 		assertEquals(Status.OK.getStatusCode(), mvcResult.getResponse().getStatus());
 	}
 
 	@Test
 	public void testUpdateCustomerByIdDoesNotExist() throws Exception {
-		MvcResult mvcResult = mockMvc.perform(put("/customer/{id}", "147488").param("creditLimit", "10")).andReturn();
+		MvcResult mvcResult = mockMvc.perform(put("/customer/{id}", "7488").param("creditLimit", "10")).andReturn();
 
 		assertEquals(422, mvcResult.getResponse().getStatus());
 		assertEquals("application/json;charset=UTF-8", mvcResult.getResponse().getContentType());
 		ErrorMessage errorMessage = mapper.readValue(mvcResult.getResponse().getContentAsString(), ErrorMessage.class);
-		assertEquals("Could not update Customer id=147488, because it does not exist.", errorMessage.getMessage());
+		assertEquals("Could not update Customer id=7488, because it does not exist.", errorMessage.getMessage());
 	}
 }
