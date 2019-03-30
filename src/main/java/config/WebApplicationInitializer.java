@@ -6,8 +6,7 @@ public class WebApplicationInitializer extends AbstractAnnotationConfigDispatche
 
 	@Override
 	protected Class<?>[] getRootConfigClasses() {
-		//return new Class[] { SpringSecurityConfig.class };
-		return null;
+		return new Class[] { SpringSecurityConfig.class };
 	}
 
 	@Override

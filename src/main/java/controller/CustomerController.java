@@ -19,11 +19,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.servlet.support.RequestContextUtils;
 
 import dto.CustomerRequest;
 import entity.Customer;
 import exception.UpdateException;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.Authorization;
 import service.CustomerCreator;
 import service.CustomerService;
 
@@ -34,7 +35,7 @@ public class CustomerController {
 
 	@Autowired
 	private CustomerService customerService;
-	
+
 	@Autowired
 	private CustomerCreator customerCreator;
 
@@ -46,14 +47,16 @@ public class CustomerController {
 		LOG.info("getCustomerById end");
 		return result;
 	}
-	
+
 	@PostMapping
+	@ApiOperation(authorizations = { @Authorization(value = "basicAuth") }, value = "addCustomer")
 	public void addCustomer(@Valid @RequestBody CustomerRequest customerRequest) {
 		LOG.info("Adding Customer id={}", customerRequest.getCustNum());
 		Customer findCustomer = customerService.findCustomerById(customerRequest.getCustNum());
 		if (Objects.nonNull(findCustomer)) {
 			LOG.warn("Add failed, Customer already exists");
-			throw new UpdateException("Could not add Customer id=" + customerRequest.getCustNum() + ", because it is already exists.");
+			throw new UpdateException(
+					"Could not add Customer id=" + customerRequest.getCustNum() + ", because it is already exists.");
 		} else {
 			Customer addCustomer = customerCreator.createCustomer(customerRequest);
 			customerService.insertCustomer(addCustomer);
@@ -62,6 +65,7 @@ public class CustomerController {
 	}
 
 	@DeleteMapping("/{id}")
+	@ApiOperation(authorizations = { @Authorization(value = "basicAuth") }, value = "deleteCustomer")
 	public void deleteCustomerById(@PathVariable("id") int id) {
 		LOG.info("Deleting Customer id={}", id);
 		Customer customer = customerService.findCustomerById(BigDecimal.valueOf(id));
@@ -75,6 +79,7 @@ public class CustomerController {
 	}
 
 	@PutMapping("/{id}")
+	@ApiOperation(authorizations = { @Authorization(value = "basicAuth") }, value = "updateCustomer")
 	public void updateCustomerById(@PathVariable("id") int id, @RequestParam("creditLimit") Integer creditLimit) {
 		LOG.info("Updating Customer id={}, creditLimit={}", id, creditLimit);
 		Customer customer = customerService.findCustomerById(BigDecimal.valueOf(id));
