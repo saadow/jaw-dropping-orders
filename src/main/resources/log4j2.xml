@@ -3,7 +3,7 @@
 <Configuration status="DEBUG" monitorInterval="30">
 	<Properties>
 		<Property name="LOG_PATTERN">
-			| %d{yyyy-MM-dd HH:mm:ss} | %p | at %C{2}(%F:%L) | %m | %n  
+			| %d{yyyy-MM-dd HH:mm:ss} | %p | at %C{2}(%F:%L) -- [%X{uuid}] | %m | %n  
 		</Property>
 	</Properties>
 
